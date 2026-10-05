@@ -5,7 +5,7 @@ import path from 'node:path';
 const root=fileURLToPath(new URL('./',import.meta.url));
 try {
  const manifest=JSON.parse(await readFile(path.join(root,'MANIFEST.json'),'utf8'));
- const walk=async(dir)=>{const result=[];for(const entry of await readdir(dir,{withFileTypes:true})){if(entry.isSymbolicLink())throw Error('SYMLINK');const p=path.join(dir,entry.name);result.push(...(entry.isDirectory()?await walk(p):[path.relative(root,p).split(path.sep).join('/')]));}return result;};
+ const walk=async(dir)=>{const result=[];for(const entry of await readdir(dir,{withFileTypes:true})){if(entry.name==='.git'&&path.resolve(dir)===path.resolve(root))continue;if(entry.isSymbolicLink())throw Error('SYMLINK');const p=path.join(dir,entry.name);result.push(...(entry.isDirectory()?await walk(p):[path.relative(root,p).split(path.sep).join('/')]));}return result;};
  const files=await walk(root);
  if(files.length!==Object.keys(manifest.files).length+1 || files.some(p=>p!=='MANIFEST.json'&&!manifest.files[p]))throw Error('UNEXPECTED_FILES');
  for(const [p,hash] of Object.entries(manifest.files))if(createHash('sha256').update(await readFile(path.join(root,p))).digest('hex')!==hash)throw Error('INTEGRITY');
