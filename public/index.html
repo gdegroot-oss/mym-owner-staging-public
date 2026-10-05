@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1714">
+  <meta name="description" content="Vind rust, kracht en richting met Master Your Meditations.">
+  <title>Master Your Meditations</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="header">
+    <a href="#/" class="brand" aria-label="Master Your Meditations Home"><span class="brand-icon" aria-hidden="true">✧</span><span>MASTER YOUR<br><strong>MEDITATIONS</strong></span></a>
+    <nav aria-label="Hoofdnavigatie"><a href="#/" id="home-link">Home</a><a href="#/explore" id="explore-link">Explore</a><a href="#/collections" id="collections-link">Collecties</a><a href="#/favorites" id="favorites-link">Favorieten</a><a href="#/profile" id="profile-link">Profiel</a></nav>
+    <button id="account" class="subtle">Inloggen <span aria-hidden="true">↗</span></button>
+  </header>
+  <a class="skip-content" href="#view">Ga naar inhoud</a>
+  <main id="view" tabindex="-1" aria-busy="true"><p class="loading" role="status">Een moment van rust begint hier…</p></main>
+  <section id="mini-player" class="mini-player" hidden aria-label="Actieve meditatie">
+    <a id="mini-link" href="#/player/master-your-morning"><span class="mini-art"></span><span><small>JE MOMENT VAN RUST</small><strong id="mini-title"></strong></span></a>
+    <button id="mini-play" class="round" aria-label="Afspelen">▶</button>
+    <span id="mini-time"></span>
+  </section>
+  <footer><span>MASTER YOUR MEDITATIONS</span><span>Maak ruimte voor jezelf.</span></footer>
+  <div id="notice" role="status" aria-live="polite" hidden></div>
+  <dialog id="login-dialog" aria-labelledby="login-title" aria-describedby="login-description">
+    <button class="dialog-close subtle" id="close-login" aria-label="Sluiten">✕</button>
+    <span class="eyebrow">JOUW PERSOONLIJKE RUIMTE</span><h2 id="login-title">Welkom terug.</h2>
+    <p id="login-description">Log in met je bestaande account om favorieten en luistervoortgang te synchroniseren.</p>
+    <form id="login-form">
+      <label>E-mailadres<input name="email" type="email" autocomplete="username" required></label>
+      <label>Wachtwoord<input name="password" type="password" autocomplete="current-password" required></label>
+      <label class="signup-choice"><input id="signup-mode" type="checkbox"> Nieuw account maken</label><p id="login-error" role="alert"></p>
+      <button class="primary" type="submit">Inloggen <span>↗</span></button>
+    </form>
+  </dialog>
+  <audio id="audio" preload="metadata"></audio>
+</body>
+</html>
