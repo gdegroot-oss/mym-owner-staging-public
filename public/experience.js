@@ -38,7 +38,7 @@ export function artworkFor(meditation) {
     const url = new URL(meditation?.artwork_url);
     if (url.protocol === 'https:') return url.href;
   } catch {}
-  return '/assets/forest-cinematic.webp';
+  return './assets/forest-cinematic.webp';
 }
 
 export function mergeProgress(remote = {}, local = {}) {
