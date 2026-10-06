@@ -7,7 +7,7 @@ const rows = [
   ['review-morning','synthetic-morning','Een rustige ochtend — synthetische review','Morning',false],
   ['review-focus','synthetic-focus','Ruimte voor aandacht, ook op de dagen waarop je gedachten blijven bewegen','Focus',false],
   ['review-sleep','synthetic-sleep','Avondrust — Premium weergave, audio geblokkeerd','Sleep',true],
-].map(([id,slug,title,category,is_premium])=>({id,slug,title,category,is_premium,description:'Synthetische visuele fixture. Geen gepubliceerde meditatie of echte stem. De player gebruikt uitsluitend stilte.',duration_seconds:60,artwork_url:null,master_audio_url:null,featured:true,published_at:'2026-01-15T12:00:00Z'}));
+].map(([id,slug,title,category,is_premium])=>({id,slug,title,category,is_premium,description:'Synthetische visuele fixture. Geen gepubliceerde meditatie of echte stem. De player gebruikt uitsluitend stilte.',duration_seconds:60,artwork_url:null,master_audio_url:is_premium?null:'./silence.wav',featured:true,published_at:'2026-01-15T12:00:00Z'}));
 const owner = {id:'owner-staging-synthetic',email:'review@example.invalid',user_metadata:{mym_onboarding:{complete:true,goals:['morning','focus']},mym_preferences:{notifications:false,marketing_email:false}}};
 export function latestProgress(rows) {return Object.fromEntries(rows.map(row=>[row.meditation_id,row]));}
 export class CatalogStore {
